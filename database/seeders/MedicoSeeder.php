@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Medico;
 
 class MedicoSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class MedicoSeeder extends Seeder
      */
     public function run(): void
     {
-        Aluno::factory()->count(10)->create();
+        Medico::factory()->count(10)->create();
     }
 }

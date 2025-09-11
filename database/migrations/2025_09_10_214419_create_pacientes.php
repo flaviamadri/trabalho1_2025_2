@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('cpf', 16);
             $table->string('nascimento', 10);
-            $table->string('especialidade', 100);
             $table->string('telefone', 20);
             $table->string('endereco', 100)->nullable();//opcional
             $table->string('email', 50);

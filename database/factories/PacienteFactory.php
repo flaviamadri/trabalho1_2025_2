@@ -22,7 +22,7 @@ class PacienteFactory extends Factory
             'cpf' => $this->faker->unique()->numerify('###########'),
             'nascimento' => $this->faker->date(),
             'telefone' => $this->faker->phoneNumber(),
-            'endereço' => $this->faker->address(),
+            'endereco' => $this->faker->address(),
             'email' => $this->faker->unique()->safeEmail(),
         ];
     }
