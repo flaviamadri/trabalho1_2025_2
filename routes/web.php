@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MedicoController;
 use Illuminate\Support\Facades\Route;
 
 /*

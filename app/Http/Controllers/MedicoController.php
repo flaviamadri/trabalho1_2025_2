@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Medico;
 use Illuminate\Http\Request;
 
@@ -10,12 +11,12 @@ class MedicoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {       $dados = Medico::All();
+    {
+        $dados = Medico::All();
 
+        //php artisan serve
 
-          //php artisan serve
-
-      return view('medico.list',['dados'=> $dados]);
+        return view('medico.list', ['dados' => $dados]);
     }
 
     /**
@@ -32,11 +33,11 @@ class MedicoController extends Controller
         //dd($request->all());
 
         $request->validate([
-            'nome'=>'required',
-            'cpf'=>'required',
-            'crm'=>'required',
-            'email'=>'required',
-        ],[
+            'nome' => 'required',
+            'cpf' => 'required',
+            'crm' => 'required',
+            'email' => 'required',
+        ], [
             'nome.required' => 'O :attribute é obrigatório',
             'cpf.required' => 'O :attribute é obrigatório',
             'crm.required' => 'O :attribute é obrigatório',
@@ -72,12 +73,12 @@ class MedicoController extends Controller
     public function update(Request $request, string $id)
     {
         //dd($request->all(), $id);
-         $request->validate([
-            'nome'=>'required',
-            'cpf'=>'required',
-            'crm'=>'required',
-            'email'=>'required',
-        ],[
+        $request->validate([
+            'nome' => 'required',
+            'cpf' => 'required',
+            'crm' => 'required',
+            'email' => 'required',
+        ], [
             'nome.required' => 'O :attribute é obrigatório',
             'cpf.required' => 'O :attribute é obrigatório',
             'crm.required' => 'O :attribute é obrigatório',
@@ -101,15 +102,15 @@ class MedicoController extends Controller
 
     public function search(Request $request)
     {
-        if(!empty($request->valor)){
+        if (!empty($request->valor)) {
             $dados = Medico::where(
                 $request->tipo,
                 'like',
                 "%$request->valor%" //filtra no pesquisar
             )->get();
-        } else{
+        } else {
             $dados = Medico::All();
         }
         return view('medico.list', ["dados" => $dados]);
-        }
+    }
 }
