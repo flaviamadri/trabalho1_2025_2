@@ -34,9 +34,13 @@ class MedicoController extends Controller
         $request->validate([
             'nome'=>'required',
             'cpf'=>'required',
+            'crm'=>'required',
+            'email'=>'required',
         ],[
             'nome.required' => 'O :attribute é obrigatório',
             'cpf.required' => 'O :attribute é obrigatório',
+            'crm.required' => 'O :attribute é obrigatório',
+            'email.required' => 'O :attribute é obrigatório',
         ]);
 
         Medico::create($request->all());

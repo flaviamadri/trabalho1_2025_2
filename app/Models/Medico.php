@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Aluno extends Model
+{
+    use HasFactory;
+    protected $table = "medicos";
+
+    protected $fillable = [
+        'nome',
+        'cpf',
+        'crm',
+        'especialidade',
+        'telefone',
+        'email',
+    ];
+  
+}

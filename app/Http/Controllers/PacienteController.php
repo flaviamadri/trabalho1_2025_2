@@ -1,21 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Medico;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
-class MedicoController extends Controller
+class PacienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {       $dados = Medico::All();
+    {       $dados = Paciente::All();
 
 
           //php artisan serve
 
-      return view('medico.list',['dados'=> $dados]);
+      return view('paciente.list',['dados'=> $dados]);
     }
 
     /**
@@ -23,7 +23,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        return view('medico.form');
+        return view('paciente.form');
     }
 
 
@@ -39,9 +39,9 @@ class MedicoController extends Controller
             'cpf.required' => 'O :attribute é obrigatório',
         ]);
 
-        Medico::create($request->all());
+        Paciente::create($request->all());
 
-        return redirect('medico');
+        return redirect('paciente');
     }
 
     /**
@@ -57,9 +57,9 @@ class MedicoController extends Controller
      */
     public function edit(string $id)
     {
-        $dado = Medico::findOrFail($id);
+        $dado = Paciente::findOrFail($id);
         //dd($dado)
-        return view('medico.form', ['dado' => $dado]);
+        return view('paciente.form', ['dado' => $dado]);
     }
 
     /**
@@ -80,9 +80,9 @@ class MedicoController extends Controller
             'email.required' => 'O :attribute é obrigatório',
         ]);
 
-        Medico::updateOrCreate(['id' => $id], $request->all());
+        Paciente::updateOrCreate(['id' => $id], $request->all());
 
-        return redirect('medico');
+        return redirect('paciente');
     }
 
     /**
@@ -90,22 +90,22 @@ class MedicoController extends Controller
      */
     public function destroy(string $id)
     {
-        $dado = Medico::findOrFail($id);
+        $dado = Paciente::findOrFail($id);
         $dado->delete();
-        return redirect('medico');
+        return redirect('paciente');
     }
 
     public function search(Request $request)
     {
         if(!empty($request->valor)){
-            $dados = Medico::where(
+            $dados = Paciente::where(
                 $request->tipo,
                 'like',
                 "%$request->valor%" //filtra no pesquisar
             )->get();
         } else{
-            $dados = Medico::All();
+            $dados = Paciente::All();
         }
-        return view('medico.list', ["dados" => $dados]);
+        return view('paciente.list', ["dados" => $dados]);
         }
 }
