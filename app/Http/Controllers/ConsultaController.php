@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paciente;
+use App\Models\Consulta;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class ConsultaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $dados = Paciente::All();
+        $dados = Consulta::All();
 
-        return view('paciente.list', ['dados' => $dados]);
+        return view('consulta.list', ['dados' => $dados]);
     }
 
     /**
@@ -22,21 +22,21 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.form');
+        return view('consulta.form');
     }
 
     private function validateRequest(Request $request)
     {
         $request->validate([
-            'nome' => 'required',
-            'cpf' => 'required',
-            'data_nascimento' => 'nullable',
-            'telefone' => 'nullable',
-            'email' => 'required',
+            'paciente_id' => 'required',
+            'medico_id' => 'required',
+            'data_consulta' => 'required',
+            'descricao' => 'nullable',
+            'status' => 'nullable',
         ], [
-            'nome.required' => 'O nome é obrigatório',
-            'cpf.required' => 'O CPF é obrigatório',
-            'email.required' => 'O E-mail é obrigatório',
+            'paciente_id.required' => 'O paciente é obrigatório',
+            'medico_id.required' => 'O médico é obrigatório',
+            'data_consulta.required' => 'A data da consulta é obrigatória',
         ]);
     }
 
@@ -44,9 +44,9 @@ class PacienteController extends Controller
     {
         $this->validateRequest($request);
 
-        Paciente::create($request->all());
+        Consulta::create($request->all());
 
-        return redirect('paciente');
+        return redirect('consulta');
     }
 
     /**
@@ -62,9 +62,9 @@ class PacienteController extends Controller
      */
     public function edit(string $id)
     {
-        $dado = Paciente::findOrFail($id);
+        $dado = Consulta::findOrFail($id);
         //dd($dado)
-        return view('paciente.form', ['dado' => $dado]);
+        return view('consulta.form', ['dado' => $dado]);
     }
 
     /**
@@ -75,9 +75,9 @@ class PacienteController extends Controller
         $this->validateRequest($request);
         $data = $request->all();
 
-        Paciente::updateOrCreate(['id' => $id], $data);
+        Consulta::updateOrCreate(['id' => $id], $data);
 
-        return redirect('paciente');
+        return redirect('consulta');
     }
 
     /**
@@ -85,24 +85,24 @@ class PacienteController extends Controller
      */
     public function destroy(string $id)
     {
-        $dado = Paciente::findOrFail($id);
+        $dado = Consulta::findOrFail($id);
         $dado->delete();
-        return redirect('paciente');
+        return redirect('consulta');
     }
 
     public function search(Request $request)
     {
         if (!empty($request->valor)) {
 
-            $dados = Paciente::where(
+            $dados = Consulta::where(
                 $request->tipo,
                 'like',
                 "%$request->valor%"
             )->get();
         } else {
-            $dados = Paciente::All();
+            $dados = Consulta::All();
         }
 
-        return view('paciente.list', ['dados' => $dados]);
+        return view('consulta.list', ['dados' => $dados]);
     }
 }

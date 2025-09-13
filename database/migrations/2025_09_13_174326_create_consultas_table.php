@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
+        Schema::create('consultas', function (Blueprint $table) {
+
             $table->id();
-            $table->string('nome', 100);
-            $table->string('cpf', 16);
-            $table->string('nascimento', 10);
-            $table->string('telefone', 20);
-            $table->string('endereco', 100)->nullable();//opcional
-            $table->string('email', 50);
+
+            $table->foreignId('paciente_id')->constrained('pacientes');
+            $table->foreignId('medico_id')->constrained('medicos');
+            $table->dateTime('data_consulta');
+            $table->text('descricao')->nullable();
+            $table->string('status')->default('agendada');
+
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pacientes');
+        Schema::dropIfExists('consultas');
     }
 };
