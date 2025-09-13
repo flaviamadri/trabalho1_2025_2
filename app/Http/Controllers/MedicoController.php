@@ -11,10 +11,12 @@ class MedicoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $dados = Medico::All();
+    {       $dados = Medico::All();
 
-        return view('medico.list', ['dados' => $dados]);
+
+          //php artisan serve
+
+      return view('medico.list',['dados'=> $dados]);
     }
 
     /**
@@ -94,8 +96,7 @@ class MedicoController extends Controller
 
     public function search(Request $request)
     {
-        if (!empty($request->valor)) {
-
+        if(!empty($request->valor)){
             $dados = Medico::where(
                 $request->tipo,
                 'like',
@@ -104,7 +105,6 @@ class MedicoController extends Controller
         } else {
             $dados = Medico::All();
         }
-
-        return view('medico.list', ['dados' => $dados]);
-    }
+        return view('medico.list', ["dados" => $dados]);
+        }
 }
