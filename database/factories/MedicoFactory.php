@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\EspecialidadeMedico;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class MedicoFactory extends Factory
             'nome' => $this->faker->name(),
             'cpf' => $this->faker->unique()->numerify('###########'),
             'crm' => $this->faker->unique()->numerify('##########'),
-            'especialidade' => $this->faker->randomElement(['Cardiologia', 'Dermatologia', 'Neurologia', 'Pediatria', 'Ortopedia']),
+            'especialidade_medico_id' => (EspecialidadeMedico::All()->random())->id,
             'telefone' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
         ];

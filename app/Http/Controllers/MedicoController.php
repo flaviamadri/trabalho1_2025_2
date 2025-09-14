@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EspecialidadeMedico;
 use App\Models\Medico;
 use Illuminate\Http\Request;
 
@@ -11,12 +12,13 @@ class MedicoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {       $dados = Medico::All();
+    {
+        $dados = Medico::All();
 
 
-          //php artisan serve
+        //php artisan serve
 
-      return view('medico.list',['dados'=> $dados]);
+        return view('medico.list', ['dados' => $dados]);
     }
 
     /**
@@ -24,7 +26,9 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        return view('medico.form');
+        $especialidades = EspecialidadeMedico::orderBy('nome')->get();
+
+        return view('medico.form', ['especialidades' => $especialidades]);
     }
 
     private function validateRequest(Request $request)
@@ -33,7 +37,7 @@ class MedicoController extends Controller
             'nome' => 'required',
             'cpf' => 'required',
             'crm' => 'required',
-            'especialidade' => 'nullable',
+            'especialidade_id' => 'nullable',
             'telefone' => 'nullable',
             'email' => 'required',
         ], [
@@ -67,8 +71,8 @@ class MedicoController extends Controller
     public function edit(string $id)
     {
         $dado = Medico::findOrFail($id);
-        //dd($dado)
-        return view('medico.form', ['dado' => $dado]);
+        $especialidades = EspecialidadeMedico::orderBy('nome')->get();
+        return view('medico.form', ['dado' => $dado, 'especialidades' => $especialidades]);
     }
 
     /**
@@ -96,7 +100,7 @@ class MedicoController extends Controller
 
     public function search(Request $request)
     {
-        if(!empty($request->valor)){
+        if (!empty($request->valor)) {
             $dados = Medico::where(
                 $request->tipo,
                 'like',
@@ -106,5 +110,5 @@ class MedicoController extends Controller
             $dados = Medico::All();
         }
         return view('medico.list', ["dados" => $dados]);
-        }
+    }
 }
