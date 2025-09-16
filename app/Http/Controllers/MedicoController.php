@@ -37,7 +37,7 @@ class MedicoController extends Controller
             'nome' => 'required',
             'cpf' => 'required',
             'crm' => 'required',
-            'especialidade_id' => 'nullable',
+            'especialidade_medico_id' => 'nullable',
             'telefone' => 'nullable',
             'email' => 'required',
         ], [
@@ -98,17 +98,28 @@ class MedicoController extends Controller
         return redirect('medico');
     }
 
-    public function search(Request $request)
-    {
-        if (!empty($request->valor)) {
+   public function search(Request $request)
+{
+    if (!empty($request->valor)) {
+        
+        if ($request->tipo === 'especialidade') {
+
+            $dados = Medico::whereHas('especialidade', function ($q) use ($request) {
+                $q->where('nome', 'like', '%' . $request->valor . '%');
+            })->get();
+        } else {
+
             $dados = Medico::where(
                 $request->tipo,
                 'like',
-                "%$request->valor%"
+                "%" . $request->valor . "%"
             )->get();
-        } else {
-            $dados = Medico::All();
         }
-        return view('medico.list', ["dados" => $dados]);
+    } else {
+        $dados = Medico::all();
     }
+
+    return view('medico.list', ["dados" => $dados]);
+}
+
 }

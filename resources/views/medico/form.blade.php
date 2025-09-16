@@ -41,7 +41,7 @@
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Especialidade</strong></label>
-                <select class="form-control" name="especialidade_id" >
+                <select class="form-control" name="especialidade_medico_id" >
 
                     <option value="">Selecione</option>
 

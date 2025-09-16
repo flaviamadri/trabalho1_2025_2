@@ -15,7 +15,7 @@ class Medico extends Model
         'nome',
         'cpf',
         'crm',
-        'especialidade_id',
+        'especialidade_medico_id',
         'telefone',
         'email',
     ];

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('cpf', 16);
             $table->string('crm', 10);
-            $table->foreignId('especialidade_medico_id')->constrained('especialidade_medicos');
+            $table->foreignId('especialidade_medico_id')->constrained('especialidade_medicos')->nullable();
             $table->string('telefone', 20)->nullable();//opcional
             $table->string('email', 50);
             $table->timestamps();
