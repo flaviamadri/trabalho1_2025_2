@@ -74,10 +74,10 @@
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->nascimento }}</td>
                     <td>{{ $item->telefone }}</td>
-                    <td>{{ $item->endereco }}</td>
-                    <td>{{ $item->email }}</td>
+                    <td style="max-width: 200px">{{ $item->endereco }}</td>
+                    <td style="max-width: 250px">{{ $item->email }}</td>
                     <td class="text-center">
-                        <a href="{{ route('medico.edit', $item->id) }}" class="btn">
+                        <a href="{{ route('paciente.edit', $item->id) }}" class="btn">
                             <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>
                         </a>
                     </td>

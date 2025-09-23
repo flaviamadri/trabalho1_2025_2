@@ -31,13 +31,13 @@
             <div class="mt-3">
                 <label class="form-label" for=""><strong>CPF</strong></label>
                 <input class="form-control" type="text" placeholder="000.000.000-00" name="cpf"
-                    value="{{ old('cpf', $dado->crm ?? '') }}">
+                    value="{{ old('cpf', $dado->cpf ?? '') }}">
             </div>
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Data de nascimento</strong></label>
                 <input class="form-control" type="text" name="nascimento"
-                    value="{{ old('nascimento', $dado->crm ?? '') }}">
+                    value="{{ old('nascimento', $dado->nascimento ?? '') }}">
             </div>
 
             <div class="mt-3">

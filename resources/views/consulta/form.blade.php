@@ -51,7 +51,7 @@
 
             <div class="d-grid gap-3 mt-4">
                 <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a type="submit" class="btn btn-success" href="{{ url('medico') }}">Voltar</a>
+                <a type="submit" class="btn btn-success" href="{{ url('consulta') }}">Voltar</a>
             </div>
 
         </div>

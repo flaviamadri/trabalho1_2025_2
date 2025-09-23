@@ -15,7 +15,6 @@ class MedicoController extends Controller
     {
         $dados = Medico::All();
 
-
         //php artisan serve
 
         return view('medico.list', ['dados' => $dados]);
@@ -101,7 +100,7 @@ class MedicoController extends Controller
    public function search(Request $request)
 {
     if (!empty($request->valor)) {
-        
+
         if ($request->tipo === 'especialidade') {
 
             $dados = Medico::whereHas('especialidade', function ($q) use ($request) {
