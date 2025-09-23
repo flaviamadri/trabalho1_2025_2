@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->foreignId('paciente_id')->constrained('pacientes');
             $table->foreignId('medico_id')->constrained('medicos');
-            $table->dateTime('data_consulta');
+            $table->date('data_consulta');
             $table->text('descricao')->nullable();
             $table->string('status')->default('agendada');
 

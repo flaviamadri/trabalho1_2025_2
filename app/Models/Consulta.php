@@ -18,4 +18,11 @@ class Consulta extends Model
         'descricao',
         'status',
     ];
+
+    protected $cast =[
+
+        'data_consulta' => 'date'
+
+    ];
+
 }
