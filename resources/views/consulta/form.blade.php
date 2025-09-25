@@ -25,28 +25,68 @@
             <h2 class="mt-3 mb-3">Cadastro de Consultas</h2>
 
             <div class="mt-3">
-                <label class="form-label" for=""><strong>Paciente ID</strong></label>
-                <input class="form-control" type="text" name="paciente_id" value="{{ old('paciente_id', $dado->paciente_id ?? '') }}">
+
+                <label for="paciente_id" class="form-label"><strong>Paciente</strong></label>
+
+                <select name="paciente_id" id="paciente" class="form-select" required>
+
+                    <option value="" disabled selected>Selecione</option>
+
+                    @foreach ($paciente as $item)
+                        <option value="<?= $item->id ?>">
+                            <?= $item->nome ?>
+                        </option>
+                    @endforeach
+
+                </select>
+
             </div>
 
             <div class="mt-3">
-                <label class="form-label" for=""><strong>Médico ID</strong></label>
-                <input class="form-control" type="text" name="medico_id" value="{{ old('medico_id', $dado->medico_id ?? '') }}">
+
+                <label for="medico_id" class="form-label"><strong>Médico</strong></label>
+
+                <select name="medico_id" id="medico" class="form-select" required>
+
+                    <option value="" disabled selected>Selecione</option>
+
+                    @foreach ($medico as $item)
+                        <option value="<?= $item->id ?>">
+                            <?= $item->nome ?>
+                        </option>
+                    @endforeach
+
+                </select>
+
             </div>
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Data da Consulta</strong></label>
-                <input class="form-control" type="text" name="data_consulta" value="{{ old('data_consulta', $dado->data_consulta ?? '') }}">
+                <input class="form-control" type="date" name="data_consulta"
+                    value="{{ old('data_consulta', $dado->data_consulta ?? '') }}">
             </div>
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Descrição</strong></label>
-                <input class="form-control" type="text" name="descricao" value="{{ old('descricao', $dado->descricao ?? '') }}">
+                <input class="form-control" type="text" name="descricao"
+                    value="{{ old('descricao', $dado->descricao ?? '') }}">
             </div>
 
-            <div class="mt-3">
+             <div class="mt-3">
+
                 <label class="form-label" for=""><strong>Status</strong></label>
-                <input class="form-control" type="text" name="status" value="{{ old('status', $dado->status ?? '') }}">
+                <select class="form-select" name="status_consulta_id">
+
+                    <option value="" disabled selected>Selecione</option>
+
+                    @foreach ($status as $item)
+                        <option value="{{ $item->id }}"
+                            {{ old('status_id', $item->status_id ?? '') == $item->id ? 'selected' : '' }}>
+                            {{ $item->nome }}
+                        </option>
+                    @endforeach
+
+                </select>
             </div>
 
             <div class="d-grid gap-3 mt-4">

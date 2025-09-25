@@ -15,8 +15,8 @@
                 <label class="form-label"><strong>Campo</strong></label>
 
                 <select name="tipo" class='form-select'>
-                    <option value="paciente_id">Paciente ID</option>
-                    <option value="medico_id">Médico ID</option>
+                    <option value="paciente">Paciente</option>
+                    <option value="medico">Médico</option>
                     <option value="data_consulta">Data da Consulta</option>
                     <option value="descricao">Descrição</option>
                     <option value="status">Status</option>
@@ -52,8 +52,8 @@
         <thead>
             <tr>
                 <td><strong>#</strong></td>
-                <td><strong>Paciente ID</strong></td>
-                <td><strong>Médico ID</strong></td>
+                <td><strong>Paciente</strong></td>
+                <td><strong>Médico</strong></td>
                 <td><strong>Data da Consulta</strong></td>
                 <td><strong>Descrição</strong></td>
                 <td><strong>Status</strong></td>
@@ -67,11 +67,11 @@
             @foreach ($dados as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->paciente_id }}</td>
-                    <td>{{ $item->medico_id }}</td>
+                    <td>{{ $item->paciente->nome}}</td>
+                    <td>{{ $item->medico->nome}}</td>
                     <td>{{ $item->data_consulta }}</td>
-                    <td>{{ $item->descricao }}</td>
-                    <td>{{ $item->status }}</td>
+                    <td style="max-width: 250px">{{ $item->descricao }}</td>
+                    <td>{{ $item->status->nome}}</td>
                     <td class="text-center">
                         <a href="{{ route('consulta.edit', $item->id) }}" class="btn">
                             <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>

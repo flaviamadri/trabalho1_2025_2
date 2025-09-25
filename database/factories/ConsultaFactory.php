@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\StatusConsulta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,12 @@ class ConsultaFactory extends Factory
     public function definition(): array
     {
         return [
-            
+
             'paciente_id' => \App\Models\Paciente::factory(),
             'medico_id' => \App\Models\Medico::factory(),
             'data_consulta' => $this->faker->dateTimeBetween('+1 days', '+1 month'),
             'descricao' => $this->faker->sentence(),
-            'status' => $this->faker->randomElement(['agendada', 'concluida', 'cancelada']),
+            'status_consulta_id' => (StatusConsulta::All()->random())->id,
         ];
     }
 }

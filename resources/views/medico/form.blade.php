@@ -40,18 +40,17 @@
             </div>
 
             <div class="mt-3">
+
                 <label class="form-label" for=""><strong>Especialidade</strong></label>
-                <select class="form-control" name="especialidade_medico_id" >
+                <select class="form-select" name="especialidade_medico_id">
 
-                    <option value="">Selecione</option>
+                    <option value="" disabled selected>Selecione</option>
 
-                    @foreach($especialidades as $item)
-
-                       <option value="{{ $item->id }}"
-                            {{ old('especialidade_id', $item->especialidade_id ?? '') == $item->id ? 'selected' : ''  }}>
+                    @foreach ($especialidades as $item)
+                        <option value="{{ $item->id }}"
+                            {{ old('especialidade_id', $item->especialidade_id ?? '') == $item->id ? 'selected' : '' }}>
                             {{ $item->nome }}
-                       </option>
-
+                        </option>
                     @endforeach
 
                 </select>

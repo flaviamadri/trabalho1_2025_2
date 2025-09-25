@@ -30,12 +30,14 @@ class PacienteController extends Controller
         $request->validate([
             'nome' => 'required',
             'cpf' => 'required',
-            'data_nascimento' => 'nullable',
-            'telefone' => 'nullable',
+            'nascimento' => 'required',
+            'telefone' => 'required',
             'email' => 'required',
         ], [
             'nome.required' => 'O nome é obrigatório',
             'cpf.required' => 'O CPF é obrigatório',
+            'nascimento.required' => 'A data de nascimento é obrigatório',
+            'telefone.required' => 'O telefone é obrigatório',
             'email.required' => 'O E-mail é obrigatório',
         ]);
     }

@@ -36,7 +36,7 @@
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Data de nascimento</strong></label>
-                <input class="form-control" type="text" name="nascimento"
+                <input class="form-control" type="date" name="nascimento"
                     value="{{ old('nascimento', $dado->nascimento ?? '') }}">
             </div>
 
@@ -54,7 +54,7 @@
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>E-mail</strong></label>
-                <input class="form-control" type="text" placeholder="Nome@gmail.com" name="email"
+                <input class="form-control" type="email" placeholder="Nome@gmail.com" name="email"
                     value="{{ old('email', $dado->email ?? '') }}">
             </div>
 
