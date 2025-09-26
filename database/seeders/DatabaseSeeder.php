@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\StatusConsulta;
+use App\Models\TipoSanguineo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StatusConsultaSeeder::class,
             EspecialidadeMedicoSeeder::class,
-            
+            TipoSanguineoSeeder::class,
             MedicoSeeder::class,
             PacienteSeeder::class,
             ConsultaSeeder::class,

@@ -23,11 +23,9 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        {
         $tiposanguineos = TipoSanguineo::orderBy('nome')->get();
 
         return view('paciente.form', ['tiposanguineo' => $tiposanguineos]);
-    }
     }
 
     private function validateRequest(Request $request)
@@ -109,16 +107,16 @@ class PacienteController extends Controller
                     $q->where('nome', 'like', '%' . $request->valor . '%');
                 })->get();
             } else {
-            $dados = Paciente::where(
-                $request->tipo,
-                'like',
-                "% . $request->valor . %"
-            )->get();
-        } } else {
+                $dados = Paciente::where(
+                    $request->tipo,
+                    'like',
+                    "% . $request->valor . %"
+                )->get();
+            }
+        } else {
             $dados = Paciente::All();
         }
 
         return view('paciente.list', ['dados' => $dados]);
     }
 }
-

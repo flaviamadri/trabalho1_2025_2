@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoSanguineo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class TipoSanguineoSeeder extends Seeder
      */
     public function run(): void
     {
-         TipoSanguineo::factory()->count(8)->create();
+        TipoSanguineo::factory()->count(8)->create();
     }
 }

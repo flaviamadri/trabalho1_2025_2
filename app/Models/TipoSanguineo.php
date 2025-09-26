@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoSanguineo extends Model
 {
-
     use HasFactory;
+    
     protected $table = 'tipo_sanguineos';
 
     protected $fillable = ['nome'];

@@ -21,10 +21,9 @@ class Paciente extends Model
         'endereco',
         'email',
     ];
+
     public function tiposanguineo()
-{
-    return $this->belongsTo(TipoSanguineo::class, 'tiposanguineo_paciente_id');
-}
-
-
+    {
+        return $this->belongsTo(TipoSanguineo::class, 'tiposanguineo_paciente_id');
+    }
 }

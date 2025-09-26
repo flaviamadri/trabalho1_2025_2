@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipo_sanguineos', function (Blueprint $table) {
             $table->id();
-             $table->string('nome', 80);
+            $table->string('nome', 80);
             $table->timestamps();
         });
     }
