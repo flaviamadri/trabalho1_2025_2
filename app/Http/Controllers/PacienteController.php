@@ -101,20 +101,22 @@ class PacienteController extends Controller
     public function search(Request $request)
     {
         if (!empty($request->valor)) {
+
             if ($request->tipo === 'tiposanguineo') {
 
                 $dados = Paciente::whereHas('tiposanguineo', function ($q) use ($request) {
                     $q->where('nome', 'like', '%' . $request->valor . '%');
                 })->get();
             } else {
+
                 $dados = Paciente::where(
                     $request->tipo,
                     'like',
-                    "% . $request->valor . %"
+                    "%" . $request->valor . "%"
                 )->get();
             }
         } else {
-            $dados = Paciente::All();
+            $dados = Paciente::all();
         }
 
         return view('paciente.list', ['dados' => $dados]);
