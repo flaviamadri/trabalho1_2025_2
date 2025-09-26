@@ -24,9 +24,9 @@ class PacienteController extends Controller
     public function create()
     {
         {
-        $tiposanguineo = TipoSanguineo::orderBy('nome')->get();
+        $tiposanguineos = TipoSanguineo::orderBy('nome')->get();
 
-        return view('paciente.form', ['tiposanguineo' => $tiposanguineo]);
+        return view('paciente.form', ['tiposanguineo' => $tiposanguineos]);
     }
     }
 
@@ -121,4 +121,4 @@ class PacienteController extends Controller
         return view('paciente.list', ['dados' => $dados]);
     }
 }
- 
+

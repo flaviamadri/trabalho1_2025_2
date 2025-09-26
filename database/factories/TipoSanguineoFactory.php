@@ -30,3 +30,4 @@ class TipoSanguineoFactory extends Factory
         ];
     }
 }
+

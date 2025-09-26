@@ -4,15 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\TipoSanguineo;
 
-class TipoSanguineoPacienteSeeder extends Seeder
+class TipoSanguineoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        TipoSanguineo::factory()->count(11)->create();
+         TipoSanguineo::factory()->count(8)->create();
     }
 }

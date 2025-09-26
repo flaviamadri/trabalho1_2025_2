@@ -23,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_sanguineos');
+        Schema::dropIfExists('tipo_sanguineos');//nome tabelaa
     }
 };
 
