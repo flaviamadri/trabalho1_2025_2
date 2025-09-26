@@ -12,13 +12,19 @@ class Paciente extends Model
     protected $table = "pacientes";
 
     protected $fillable = [
-        
+
         'nome',
         'cpf',
         'nascimento',
+        'tiposanguineo_paciente_id',
         'telefone',
         'endereco',
         'email',
     ];
+    public function tiposanguineo()
+{
+    return $this->belongsTo(TipoSanguineo::class, 'tiposanguineo_paciente_id');
+}
+
 
 }
