@@ -18,6 +18,7 @@
                     <option value="nome">Nome</option>
                     <option value="cpf">CPF</option>
                     <option value="nascimento">Data de nascimento</option>
+                    <option value="tiposanguineo">Tipo Sanguineo</option>
                     <option value="telefone">Telefone</option>
                     <option value="endereco">Endereço</option>
                     <option value="email">Email</option>
@@ -56,6 +57,7 @@
                 <td><strong>Nome</strong></td>
                 <td><strong>CPF</strong></td>
                 <td><strong>Data de nasc.</strong></td>
+                <td><strong>Tipo Sanguineo</strong></td>
                 <td><strong>Telefone</strong></td>
                 <td><strong>Endereço</strong></td>
                 <td><strong>Email</strong></td>
@@ -73,6 +75,7 @@
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->nascimento }}</td>
+                     <td>{{ $item->tiposanguineo->nome }}</td>
                     <td>{{ $item->telefone }}</td>
                     <td style="max-width: 200px">{{ $item->endereco }}</td>
                     <td style="max-width: 250px">{{ $item->email }}</td>

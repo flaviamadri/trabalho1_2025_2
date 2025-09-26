@@ -41,6 +41,23 @@
             </div>
 
             <div class="mt-3">
+
+                <label class="form-label" for=""><strong>Tipo sanguíneo</strong></label>
+                <select class="form-select" name="tiposanguineo_paciente_id">
+
+                    <option value="" disabled selected>Selecione</option>
+
+                    @foreach ($tiposanguineo as $item)
+                        <option value="{{ $item->id }}"
+                            {{ old('tiposanguineo_id', $item->tiposanguineo_id ?? '') == $item->id ? 'selected' : '' }}>
+                            {{ $item->nome }}
+                        </option>
+                    @endforeach
+
+                </select>
+            </div>
+
+            <div class="mt-3">
                 <label class="form-label" for=""><strong>Telefone</strong></label>
                 <input class="form-control" type="text" name="telefone" placeholder="(00) 00000-0000"
                     value="{{ old('telefone', $dado->telefone ?? '') }}">

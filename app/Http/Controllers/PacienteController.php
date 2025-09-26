@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoSanguineo;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,11 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.form');
+        {
+        $tiposanguineo = TipoSanguineo::orderBy('nome')->get();
+
+        return view('paciente.form', ['tiposanguineo' => $tiposanguineo]);
+    }
     }
 
     private function validateRequest(Request $request)
@@ -31,12 +36,14 @@ class PacienteController extends Controller
             'nome' => 'required',
             'cpf' => 'required',
             'nascimento' => 'required',
+            'tiposanguineo_paciente_id' => 'required',
             'telefone' => 'required',
             'email' => 'required',
         ], [
             'nome.required' => 'O nome é obrigatório',
             'cpf.required' => 'O CPF é obrigatório',
             'nascimento.required' => 'A data de nascimento é obrigatório',
+            'tiposanguineo_paciente_id' => 'A tipo sanguíneo é obrigatório',
             'telefone.required' => 'O telefone é obrigatório',
             'email.required' => 'O E-mail é obrigatório',
         ]);
@@ -64,9 +71,10 @@ class PacienteController extends Controller
      */
     public function edit(string $id)
     {
+
         $dado = Paciente::findOrFail($id);
-        //dd($dado)
-        return view('paciente.form', ['dado' => $dado]);
+        $tiposanguineo = TipoSanguineo::orderBy('nome')->get();
+        return view('paciente.form', ['dado' => $dado, 'tipossanguineo' => $tiposanguineo]);
     }
 
     /**
@@ -95,16 +103,22 @@ class PacienteController extends Controller
     public function search(Request $request)
     {
         if (!empty($request->valor)) {
+            if ($request->tipo === 'tiposanguineo') {
 
+                $dados = Paciente::whereHas('tiposanguineo', function ($q) use ($request) {
+                    $q->where('nome', 'like', '%' . $request->valor . '%');
+                })->get();
+            } else {
             $dados = Paciente::where(
                 $request->tipo,
                 'like',
-                "%$request->valor%"
+                "% . $request->valor . %"
             )->get();
-        } else {
+        } } else {
             $dados = Paciente::All();
         }
 
         return view('paciente.list', ['dados' => $dados]);
     }
 }
+ 
