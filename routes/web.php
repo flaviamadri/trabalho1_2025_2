@@ -45,3 +45,4 @@ Route::get('/consulta/edit/{id}', [ConsultaController::class, 'edit'])->name('co
 Route::put('/consulta/update/{id}', [ConsultaController::class, 'update'])->name('consulta.update');
 Route::post('/consulta/search', [ConsultaController::class, 'search'])->name('consulta.search');
 Route::delete('/consulta/{id}', [ConsultaController::class, 'destroy'])->name('consulta.destroy');
+

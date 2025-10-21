@@ -71,8 +71,8 @@ class PacienteController extends Controller
     {
 
         $dado = Paciente::findOrFail($id);
-        $tiposanguineo = TipoSanguineo::orderBy('nome')->get();
-        return view('paciente.form', ['dado' => $dado, 'tipossanguineo' => $tiposanguineo]);
+        $tiposanguineos = TipoSanguineo::orderBy('nome')->get();
+        return view('paciente.form', ['dado' => $dado, 'tiposanguineos' => $tiposanguineos]);
     }
 
     /**

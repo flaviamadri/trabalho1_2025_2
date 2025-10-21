@@ -31,7 +31,7 @@ class ConsultaController extends Controller
         $medicos = Medico::all();
         $status = StatusConsulta::orderBy('nome')->get();
 
-        return view('consulta.form', ['paciente' => $pacientes, 'medico' => $medicos, 'status' => $status]);
+        return view('consulta.form', ['pacientes' => $pacientes, 'medicos' => $medicos, 'status' => $status]);
     }
 
     private function validateRequest(Request $request)
@@ -74,8 +74,11 @@ class ConsultaController extends Controller
     public function edit(string $id)
     {
         $dado = Consulta::findOrFail($id);
-        //dd($dado)
-        return view('consulta.form', ['dado' => $dado]);
+        $pacientes = Paciente::all();
+        $medicos = Medico::all();
+        $status = StatusConsulta::orderBy('nome')->get();
+
+        return view('consulta.form', ['dado' => $dado, 'pacientes' => $pacientes, 'medicos' => $medicos, 'status' => $status]);
     }
 
     /**
@@ -118,7 +121,7 @@ class ConsultaController extends Controller
                 $dados = Consulta::whereHas('status', function ($q) use ($request) {
                     $q->where('nome', 'like', '%' . $request->valor . '%');
                 })->get();
-            }else {
+            } else {
                 $dados = Consulta::where(
                     $request->tipo,
                     'like',

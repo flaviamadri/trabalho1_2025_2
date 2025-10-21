@@ -32,7 +32,7 @@
 
                     <option value="" disabled selected>Selecione</option>
 
-                    @foreach ($paciente as $item)
+                    @foreach ($pacientes as $item)
                         <option value="<?= $item->id ?>">
                             <?= $item->nome ?>
                         </option>
@@ -50,7 +50,7 @@
 
                     <option value="" disabled selected>Selecione</option>
 
-                    @foreach ($medico as $item)
+                    @foreach ($medicos as $item)
                         <option value="<?= $item->id ?>">
                             <?= $item->nome ?>
                         </option>

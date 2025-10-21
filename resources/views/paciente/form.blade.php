@@ -47,7 +47,7 @@
 
                     <option value="" disabled selected>Selecione</option>
 
-                    @foreach ($tiposanguineo as $item)
+                    @foreach ($tiposanguineos as $item)
                         <option value="{{ $item->id }}"
                             {{ old('tiposanguineo_id', $item->tiposanguineo_id ?? '') == $item->id ? 'selected' : '' }}>
                             {{ $item->nome }}
