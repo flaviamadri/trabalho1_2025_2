@@ -1,10 +1,30 @@
-@extends ('base')
-@section('titulo', 'Home')
-@section('conteudo')
+<!doctype html>
+<html lang="en">
 
-    <div class='container'>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-        <h2 class='mt-5'>Sistema de Gestão - Hospital</h2>
+<body>
+
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid px-5">
+                <spa class="navbar-brand mb-0 fs-3">Flavi - Sistema de Gestão</spa>
+            </div>
+            
+        </nav>
+    </header>
+
+    <div class="container py-5">
+
         <h5>Bem-vindo ao sistema de gestão.</h5>
 
         <div class='row text-center mt-5'>
@@ -49,6 +69,7 @@
             </div>
 
         </div>
+
     </div>
 
-@stop
+</body>
