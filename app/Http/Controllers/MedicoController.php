@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EspecialidadeMedico;
 use App\Models\Medico;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MedicoController extends Controller
 {
@@ -121,4 +122,25 @@ class MedicoController extends Controller
 
         return view('medico.list', ["dados" => $dados]);
     }
+
+    public function report()
+    {
+
+        //select * from Aluno order by nome
+        //$dados = Aluno::All()
+        $dados = Medico::orderBy('nome')->get();
+        //$dados = Aluno::where('nome', 'like', "a%")->get();
+
+        $data = [
+            'titulo' => 'Relatório - Listagem de Médicos',
+            'dados' =>  $dados,
+        ];
+
+        $pdf = Pdf::loadView('medico.report', $data)
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->download('relatorio_listagem_medicos.pdf');
+    }
+
+
 }
