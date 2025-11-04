@@ -38,9 +38,14 @@
                     Buscar
                 </button>
 
-                <a class="btn btn-success" href="{{ url('/paciente/create') }}">
+                <a class="btn btn-success me-4" href="{{ url('/paciente/create') }}">
                     <i class="fa-solid fa-plus"></i>
                     Novo
+                </a>
+
+                <a class="btn btn-success" href="{{ url('/paciente/report') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    Relatório PDF
                 </a>
 
             </div>

@@ -27,6 +27,7 @@ Route::post('/medico/search', [MedicoController::class, 'search'])->name('medico
 Route::delete('/medico/{id}', [MedicoController::class, 'destroy'])->name('medico.destroy');
 
 use App\Http\Controllers\PacienteController;
+use App\Models\Paciente;
 
 Route::get('/paciente', [PacienteController::class, 'index'])->name('paciente.index');
 Route::get('/paciente/create', [PacienteController::class, 'create'])->name('paciente.create');
@@ -34,6 +35,7 @@ Route::post('/paciente', [PacienteController::class, 'store'])->name('paciente.s
 Route::get('/paciente/edit/{id}', [PacienteController::class, 'edit'])->name('paciente.edit');
 Route::put('/paciente/update/{id}', [PacienteController::class, 'update'])->name('paciente.update');
 Route::post('/paciente/search', [PacienteController::class, 'search'])->name('paciente.search');
+Route::get('/paciente/report', [PacienteController::class, 'report'])->name('paciente.report');
 Route::delete('/paciente/{id}', [PacienteController::class, 'destroy'])->name('paciente.destroy');
 
 use App\Http\Controllers\ConsultaController;

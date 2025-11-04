@@ -15,11 +15,33 @@
 <body>
 
     <header>
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid px-5">
-                <spa class="navbar-brand mb-0 fs-3">Flavi - Sistema de Gestão</spa>
+
+        <nav class="navbar navbar-expand-lg px-3">
+
+            <div class="container-fluid">
+
+                <a class="navbar-brand fs-3" href="#">Flavy - Sistema de gestão</a>
+
+                <div class="collapse navbar-collapse fs-5" id="navbarNav">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Médicos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pacientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-disabled="true">Consultas</a>
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
-            
         </nav>
     </header>
 

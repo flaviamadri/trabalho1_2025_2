@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoSanguineo;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PacienteController extends Controller
 {
@@ -120,5 +121,24 @@ class PacienteController extends Controller
         }
 
         return view('paciente.list', ['dados' => $dados]);
+    }
+
+    public function report()
+    {
+
+        //select * from Aluno order by nome
+        //$dados = Aluno::All()
+        $dados = Paciente::orderBy('nome')->get();
+        //$dados = Aluno::where('nome', 'like', "a%")->get();
+
+        $data = [
+            'titulo' => 'Relatório - Listagem de Pacientes',
+            'dados' =>  $dados,
+        ];
+
+        $pdf = Pdf::loadView('paciente.report', $data)
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->download('relatorio_listagem_pacientes.pdf');
     }
 }
