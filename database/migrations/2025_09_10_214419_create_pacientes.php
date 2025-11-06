@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
+            $table->string('imagem', 150)->nullable();
             $table->string('nome', 100);
             $table->string('cpf', 16);
             $table->string('nascimento', 10);

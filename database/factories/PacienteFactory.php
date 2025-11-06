@@ -19,6 +19,7 @@ class PacienteFactory extends Factory
     {
         return [
 
+            'imagem' => 'uploads/' . basename($this->faker->image(public_path('uploads'), 400, 400, 'cats', true, true)),
             'nome' => $this->faker->name(),
             'cpf' => $this->faker->unique()->numerify('###########'),
             'nascimento' => $this->faker->date(),
@@ -26,7 +27,7 @@ class PacienteFactory extends Factory
             'telefone' => $this->faker->phoneNumber(),
             'endereco' => $this->faker->address(),
             'email' => $this->faker->unique()->safeEmail(),
-            'imagem' => null,
+
         ];
     }
 }

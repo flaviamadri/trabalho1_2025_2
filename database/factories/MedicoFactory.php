@@ -18,14 +18,14 @@ class MedicoFactory extends Factory
     public function definition(): array
     {
         return [
-
+            'imagem' => 'uploads/' . basename($this->faker->image(public_path('uploads'), 400, 400, 'cats', true, true)),
             'nome' => $this->faker->name(),
             'cpf' => $this->faker->unique()->numerify('###########'),
             'crm' => $this->faker->unique()->numerify('##########'),
             'especialidade_medico_id' => (EspecialidadeMedico::All()->random())->id,
             'telefone' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
-            'imagem' => null,
+
         ];
     }
 }
