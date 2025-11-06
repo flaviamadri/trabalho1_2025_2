@@ -87,7 +87,7 @@
                     <td>{{ $item->telefone }}</td>
                     <td>{{ $item->email }}</td>
                     <td class="text-center">
-                        <a href="{{ route('medicos.list_pacientes', $item->id) }}" class="btn">
+                        <a href="{{ route('medico.list_pacientes', $item->id) }}" class="btn">
                             <i style="color: #1148ad;" class="fa-solid fa-users"></i>
                         </a>
                     </td>
