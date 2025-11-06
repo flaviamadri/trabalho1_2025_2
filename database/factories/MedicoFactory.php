@@ -25,6 +25,7 @@ class MedicoFactory extends Factory
             'especialidade_medico_id' => (EspecialidadeMedico::All()->random())->id,
             'telefone' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
+            'imagem' => null,
         ];
     }
 }

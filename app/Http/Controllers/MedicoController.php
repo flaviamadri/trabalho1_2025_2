@@ -15,9 +15,6 @@ class MedicoController extends Controller
     public function index()
     {
         $dados = Medico::All();
-
-        //php artisan serve
-
         return view('medico.list', ['dados' => $dados]);
     }
 
@@ -63,7 +60,11 @@ class MedicoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $medico = Medico::with('pacientes')->findOrFail($id);
+        return view('medicos.show', compact('medico'));
+
+        $medico = Medico::with('consultas')->findOrFail($id);
+        return view('medicos.show', compact('medico'));
     }
 
     /**
@@ -83,6 +84,19 @@ class MedicoController extends Controller
     {
         $this->validateRequest($request);
         $data = $request->all();
+        $imagem = $request->file('imagem');
+
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/medico/";
+
+            $imagem->storeAs(
+                $diretorio,
+                $nome_imagem,
+                'public'
+            );
+            $data['imagem'] = $diretorio . $nome_imagem;
+        }
 
         Medico::updateOrCreate(['id' => $id], $data);
 
@@ -140,6 +154,12 @@ class MedicoController extends Controller
             ->setPaper('a4', 'landscape');
 
         return $pdf->download('relatorio_listagem_medicos.pdf');
+    }
+    public function listarPacientes($id)
+    {
+        $medico = Medico::with('consultas.paciente')->findOrfail($id);
+
+        return view('medico.list_pacientes', compact('medico'));
     }
 
 

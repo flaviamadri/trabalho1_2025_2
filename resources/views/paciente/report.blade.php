@@ -50,7 +50,12 @@
         </thead>
         <tbody>
             @foreach ($dados as $item)
+            @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
+                    $imagemPath = storage_path('app/public/' . $nome_imagem);
+                @endphp
                 <tr>
+                    <td><img src="{{ $imagemPath }}" width="100px" height="100px" alt="img"></td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->nascimento }}</td>

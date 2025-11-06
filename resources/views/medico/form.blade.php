@@ -70,6 +70,15 @@
                         value="{{ old('email', $dado->email ?? '') }}">
                 </div>
 
+                @php
+                    $nome_imagem = !empty($dado->imagem) ? $dado->imagem :'sem_imagem.png';
+                @endphp
+                <div class="col"><br>
+                    <label for="">Imagem:</label>
+                    <img src="/storage/{{$nome_imagem}}" width="200px" height="200px" alt="img">
+                    <input class= "form-control" type="file" name="imagem" value="{{old('imagem',$dado->imagem ?? '')}}">
+        </div>
+
                 <div class="d-grid gap-3 mt-4">
                     <button type="submit"
                         class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>

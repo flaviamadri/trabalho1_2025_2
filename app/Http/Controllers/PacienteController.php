@@ -83,6 +83,19 @@ class PacienteController extends Controller
     {
         $this->validateRequest($request);
         $data = $request->all();
+        $imagem = $request->file('imagem');
+
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/paciente/";
+
+            $imagem->storeAs(
+                $diretorio,
+                $nome_imagem,
+                'public'
+            );
+            $data['imagem'] = $diretorio . $nome_imagem;
+        }
 
         Paciente::updateOrCreate(['id' => $id], $data);
 

@@ -13,6 +13,7 @@ class Paciente extends Model
 
     protected $fillable = [
 
+
         'nome',
         'cpf',
         'nascimento',
@@ -20,7 +21,12 @@ class Paciente extends Model
         'telefone',
         'endereco',
         'email',
+        'imagem',
     ];
+     public function medicos()
+     {
+        return $this->belongsTo(Medico::class);
+    }
 
     public function tiposanguineo()
     {

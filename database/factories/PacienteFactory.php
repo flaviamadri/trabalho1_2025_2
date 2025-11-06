@@ -26,6 +26,7 @@ class PacienteFactory extends Factory
             'telefone' => $this->faker->phoneNumber(),
             'endereco' => $this->faker->address(),
             'email' => $this->faker->unique()->safeEmail(),
+            'imagem' => null,
         ];
     }
 }

@@ -12,12 +12,14 @@ class Medico extends Model
     protected $table = "medicos";
 
     protected $fillable = [
+
         'nome',
         'cpf',
         'crm',
         'especialidade_medico_id',
         'telefone',
         'email',
+        'imagem',
     ];
 
     public function especialidade()
@@ -25,9 +27,14 @@ class Medico extends Model
         return $this->belongsTo(EspecialidadeMedico::class, 'especialidade_medico_id');
     }
 
-    public function consultas()
+    public function pacientes()
     {
-        return $this->hasMany(Consulta::class, 'medico_id');
+        return $this->hasMany(Paciente::class);
+    }
+
+     public function consultas()
+    {
+        return $this->hasMany(Consulta::class);
     }
 
 }

@@ -58,6 +58,7 @@
 
         <thead>
             <tr>
+                <td><strong>Imagem</strong></td>
                 <td><strong>#</strong></td>
                 <td><strong>Nome</strong></td>
                 <td><strong>CPF</strong></td>
@@ -65,15 +66,19 @@
                 <td><strong>Especialidade</strong></td>
                 <td><strong>Telefone</strong></td>
                 <td><strong>E-mail</strong></td>
+                <td><strong>P.</strong></td>
                 <td><strong>Editar</strong></td>
                 <td><strong>Deletar</strong></td>
             </tr>
         </thead>
 
         <tbody>
-
             @foreach ($dados as $item)
-                <tr>
+                 @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
+                 @endphp
+                    <tr>
+                    <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
@@ -81,6 +86,11 @@
                     <td>{{ $item->especialidade->nome }}</td>
                     <td>{{ $item->telefone }}</td>
                     <td>{{ $item->email }}</td>
+                    <td class="text-center">
+                        <a href="{{ route('medicos.list_pacientes', $item->id) }}" class="btn">
+                            <i style="color: #1148ad;" class="fa-solid fa-users"></i>
+                        </a>
+                    </td>
                     <td class="text-center">
                         <a href="{{ route('medico.edit', $item->id) }}" class="btn">
                             <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>

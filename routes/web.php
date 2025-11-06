@@ -26,6 +26,7 @@ Route::put('/medico/update/{id}', [MedicoController::class, 'update'])->name('me
 Route::post('/medico/search', [MedicoController::class, 'search'])->name('medico.search');
 Route::delete('/medico/{id}', [MedicoController::class, 'destroy'])->name('medico.destroy');
 Route::get('/medico/report', [MedicoController::class, 'report'])->name('medico.report');
+Route::get('/medicos/{id}/pacientes', [MedicoController::class, 'listarPacientes'])->name('medico.list_pacientes');
 
 use App\Http\Controllers\PacienteController;
 use App\Models\Paciente;
