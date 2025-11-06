@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\TipoSanguineoPacienteChart;
 use App\Models\TipoSanguineo;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
@@ -153,5 +154,10 @@ class PacienteController extends Controller
             ->setPaper('a4', 'landscape');
 
         return $pdf->download('relatorio_listagem_pacientes.pdf');
+    }
+
+     public function chart(TipoSanguineoPacienteChart $chart){
+
+        return view('paciente.chart', ['chart' => $chart->build()]);
     }
 }

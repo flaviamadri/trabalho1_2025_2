@@ -43,9 +43,14 @@
                     Novo
                 </a>
 
-                <a class="btn btn-success" href="{{ url('/paciente/report') }}">
+                <a class="btn btn-success me-4" href="{{ url('/paciente/report') }}">
                     <i class="fa-solid fa-plus"></i>
                     Relatório PDF
+                </a>
+
+                <a class="btn btn-success" href="{{ url('/paciente/chart') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    Gráfico
                 </a>
 
             </div>
@@ -77,14 +82,13 @@
             @foreach ($dados as $item)
               @php
                 $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
-            @endphp
-                    <tr>
+            @endphp                    <tr>
                     <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->nascimento }}</td>
-                     <td>{{ $item->tiposanguineo->nome }}</td>
+                    <td>{{ $item->tiposanguineo->nome }}</td>
                     <td>{{ $item->telefone }}</td>
                     <td style="max-width: 200px">{{ $item->endereco }}</td>
                     <td style="max-width: 250px">{{ $item->email }}</td>
@@ -103,7 +107,6 @@
                         </form>
                     </td>
                 </tr>
-
             @endforeach
         </tbody>
     </table>
