@@ -7,6 +7,7 @@ use App\Models\Medico;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\StatusConsulta;
+use App\Charts\StatusConsultaChart;
 use Illuminate\Database\Console\Migrations\StatusCommand;
 
 class ConsultaController extends Controller
@@ -133,5 +134,10 @@ class ConsultaController extends Controller
         }
 
         return view('consulta.list', ['dados' => $dados]);
+    }
+
+    public function chart(StatusConsultaChart $chart){
+
+        return view('consulta.chart', ['chart' => $chart->build()]);
     }
 }

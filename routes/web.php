@@ -38,6 +38,7 @@ Route::put('/paciente/update/{id}', [PacienteController::class, 'update'])->name
 Route::post('/paciente/search', [PacienteController::class, 'search'])->name('paciente.search');
 Route::get('/paciente/report', [PacienteController::class, 'report'])->name('paciente.report');
 Route::delete('/paciente/{id}', [PacienteController::class, 'destroy'])->name('paciente.destroy');
+Route::get('/paciente/chart', [PacienteController::class, 'chart'])->name('paciente.chart');
 
 use App\Http\Controllers\ConsultaController;
 
@@ -48,4 +49,6 @@ Route::get('/consulta/edit/{id}', [ConsultaController::class, 'edit'])->name('co
 Route::put('/consulta/update/{id}', [ConsultaController::class, 'update'])->name('consulta.update');
 Route::post('/consulta/search', [ConsultaController::class, 'search'])->name('consulta.search');
 Route::delete('/consulta/{id}', [ConsultaController::class, 'destroy'])->name('consulta.destroy');
+Route::get('/consulta/chart', [ConsultaController::class, 'chart'])->name('consulta.chart');
+
 

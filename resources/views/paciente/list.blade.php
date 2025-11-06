@@ -43,9 +43,14 @@
                     Novo
                 </a>
 
-                <a class="btn btn-success" href="{{ url('/paciente/report') }}">
+                <a class="btn btn-success me-4" href="{{ url('/paciente/report') }}">
                     <i class="fa-solid fa-plus"></i>
                     Relatório PDF
+                </a>
+
+                <a class="btn btn-success" href="{{ url('/paciente/chart') }}">
+                    <i class="fa-solid fa-plus"></i>
+                    Gráfico
                 </a>
 
             </div>
@@ -74,13 +79,12 @@
         <tbody>
 
             @foreach ($dados as $item)
-
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->nascimento }}</td>
-                     <td>{{ $item->tiposanguineo->nome }}</td>
+                    <td>{{ $item->tiposanguineo->nome }}</td>
                     <td>{{ $item->telefone }}</td>
                     <td style="max-width: 200px">{{ $item->endereco }}</td>
                     <td style="max-width: 250px">{{ $item->email }}</td>
@@ -99,7 +103,6 @@
                         </form>
                     </td>
                 </tr>
-
             @endforeach
         </tbody>
     </table>
