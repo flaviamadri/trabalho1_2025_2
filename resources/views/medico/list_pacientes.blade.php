@@ -2,7 +2,7 @@
 @section('titulo', 'Formulário paciente')
 @section('conteudo')
 
-    <h2>Pacientes do Dr(a). {{ $medico->nome }}</h2>
+    <h2 class="mt-5">Pacientes do Dr(a). {{ $medico->nome }}</h2>
 
     <table class="table table table-striped table-bordered mt-4">
 
@@ -26,10 +26,10 @@
                 $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
             @endphp
 
-            
+
 
             @if ($pacientes->isEmpty())
-                <p>Nenhum paciente encontrado.</p>
+                <p class="fs-5 mt-3">Nenhum paciente encontrado.</p>
             @else
                 @foreach ($pacientes as $paciente)
                     <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
