@@ -19,9 +19,9 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="mx-auto bg-white p-4 rounded col" style="max-width: 600px;">
+        <div class="mx-auto bg-white p-4 rounded col border p-4 rounded" style="max-width: 800px;">
 
-            <h2 class="mt-3 mb-3">Cadastro de Pacientes</h2>
+            <h2 class="mt-3 mb-3 ">Cadastro de Pacientes</h2>
 
             @php
                 $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
@@ -56,7 +56,7 @@
 
                     <option value="" disabled selected>Selecione</option>
 
-                    @foreach ($tiposanguineos as $item)
+                    @foreach ($tiposanguineo as $item)
                         <option value="{{ $item->id }}"
                             {{ old('tiposanguineo_id', $item->tiposanguineo_id ?? '') == $item->id ? 'selected' : '' }}>
                             {{ $item->nome }}
@@ -88,7 +88,7 @@
                 <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
                 <a type="submit" class="btn btn-success" href="{{ url('paciente') }}">Voltar</a>
             </div>
-
+            
         </div>
     </form>
 @stop

@@ -58,8 +58,9 @@
 
         <thead>
             <tr>
-                <td><strong>Imagem</strong></td>
+
                 <td><strong>#</strong></td>
+                 <td><strong>Imagem</strong></td>
                 <td><strong>Nome</strong></td>
                 <td><strong>CPF</strong></td>
                 <td><strong>CRM</strong></td>
@@ -73,13 +74,13 @@
         </thead>
 
         <tbody>
-            @foreach ($dados as $item)
-                 @php
-                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
-                 @endphp
-                    <tr>
-                    <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
-                    <td>{{ $item->id }}</td>
+             @foreach ($dados as $item)
+                @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
+                @endphp
+
+                <td>{{ $item->id }}</td>
+                <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->crm }}</td>

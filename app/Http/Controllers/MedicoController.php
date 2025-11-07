@@ -37,22 +37,40 @@ class MedicoController extends Controller
             'especialidade_medico_id' => 'required',
             'telefone' => 'nullable',
             'email' => 'required',
+            'imagem' => 'nullable|image|mimes:png,jpg,jpeg',
         ], [
             'nome.required' => 'O nome é obrigatório',
             'cpf.required' => 'O CPF é obrigatório',
             'especialidade_medico_id.required' => 'A especialidade do medico é obrigatório',
             'crm.required' => 'O CRM é obrigatório',
             'email.required' => 'O E-mail é obrigatório',
+            'imagem.image' => 'O :attribute deve ser enviado',
+            'imagem.mimes' => 'O :attribute deve ser das extensões:PNG,JPEG,JPG',
         ]);
+
     }
 
     public function store(Request $request)
     {
         $this->validateRequest($request);
 
-        Medico::create($request->all());
 
-        return redirect('medico');
+        $imagem = $request->file('imagem');
+
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/medico/";
+
+            $imagem->storeAs(
+                $diretorio,
+                $nome_imagem,
+                'public'
+            );
+            $data['imagem'] = $diretorio . $nome_imagem;
+        }
+
+            Medico::create($request->all());
+            return redirect('medico');
     }
 
     /**
@@ -84,7 +102,7 @@ class MedicoController extends Controller
     {
         $this->validateRequest($request);
         $data = $request->all();
-        $imagem = $request->file('imagem');
+         $imagem = $request->file('imagem');
 
         if ($imagem) {
             $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
