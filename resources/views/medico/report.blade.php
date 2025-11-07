@@ -45,7 +45,7 @@
     <table>
         <thead>
             <tr>
-                <td>#ID</td>
+                <td>Imagem</td>
                 <td>Nome</td>
                 <td>CPF</td>
                 <td>CRM</td>
@@ -57,12 +57,11 @@
         <tbody>
              @foreach ($dados as $item)
              @php
-                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
                     $imagemPath = storage_path('app/public/' . $nome_imagem);
                 @endphp
                 <tr>
                     <td><img src="{{ $imagemPath }}" width="100px" height="100px" alt="img"> </td>
-                    <td>{{ $item->id }}</td>
                     <td>{{ $item->nome }}</td>
                     <td>{{ $item->cpf }}</td>
                     <td>{{ $item->crm }}</td>

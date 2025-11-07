@@ -20,79 +20,82 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="mx-auto bg-white p-4 rounded col border p-4 rounded" style="max-width: 800px;">
+        <div class="mx-auto bg-white p-4 rounded" style="max-width: 800px;">
 
-            <h2 class="mt-3 mb-3">Cadastro de Consultas</h2>
-            
+            <h2 class="mt-3 mb-5">Cadastro de Consultas</h2>
 
-            <div class="mt-3">
+            <div class="border p-4 rounded shadow-lg">
 
-                <label for="paciente_id" class="form-label"><strong>Paciente</strong></label>
+                <div class="mt-3">
 
-                <select name="paciente_id" id="paciente" class="form-select" required>
+                    <label for="paciente_id" class="form-label"><strong>Paciente</strong></label>
 
-                    <option value="" disabled selected>Selecione</option>
+                    <select name="paciente_id" id="paciente" class="form-select" required>
 
-                    @foreach ($pacientes as $item)
-                        <option value="<?= $item->id ?>">
-                            <?= $item->nome ?>
-                        </option>
-                    @endforeach
+                        <option value="" disabled selected>Selecione</option>
 
-                </select>
+                        @foreach ($pacientes as $item)
+                            <option value="<?= $item->id ?>">
+                                <?= $item->nome ?>
+                            </option>
+                        @endforeach
 
-            </div>
+                    </select>
 
-            <div class="mt-3">
+                </div>
 
-                <label for="medico_id" class="form-label"><strong>Médico</strong></label>
+                <div class="mt-3">
 
-                <select name="medico_id" id="medico" class="form-select" required>
+                    <label for="medico_id" class="form-label"><strong>Médico</strong></label>
 
-                    <option value="" disabled selected>Selecione</option>
+                    <select name="medico_id" id="medico" class="form-select" required>
 
-                    @foreach ($medicos as $item)
-                        <option value="<?= $item->id ?>">
-                            <?= $item->nome ?>
-                        </option>
-                    @endforeach
+                        <option value="" disabled selected>Selecione</option>
 
-                </select>
+                        @foreach ($medicos as $item)
+                            <option value="<?= $item->id ?>">
+                                <?= $item->nome ?>
+                            </option>
+                        @endforeach
 
-            </div>
+                    </select>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Data da Consulta</strong></label>
-                <input class="form-control" type="date" name="data_consulta"
-                    value="{{ old('data_consulta', $dado->data_consulta ?? '') }}">
-            </div>
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Descrição</strong></label>
-                <input class="form-control" type="text" name="descricao"
-                    value="{{ old('descricao', $dado->descricao ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Data da Consulta</strong></label>
+                    <input class="form-control" type="date" name="data_consulta"
+                        value="{{ old('data_consulta', $dado->data_consulta ?? '') }}">
+                </div>
 
-             <div class="mt-3">
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Descrição</strong></label>
+                    <input class="form-control" type="text" name="descricao"
+                        value="{{ old('descricao', $dado->descricao ?? '') }}">
+                </div>
 
-                <label class="form-label" for=""><strong>Status</strong></label>
-                <select class="form-select" name="status_consulta_id">
+                <div class="mt-3">
 
-                    <option value="" disabled selected>Selecione</option>
+                    <label class="form-label" for=""><strong>Status</strong></label>
+                    <select class="form-select" name="status_consulta_id">
 
-                    @foreach ($status as $item)
-                        <option value="{{ $item->id }}"
-                            {{ old('status_id', $item->status_id ?? '') == $item->id ? 'selected' : '' }}>
-                            {{ $item->nome }}
-                        </option>
-                    @endforeach
+                        <option value="" disabled selected>Selecione</option>
 
-                </select>
-            </div>
+                        @foreach ($status as $item)
+                            <option value="{{ $item->id }}"
+                                {{ old('status_id', $item->status_id ?? '') == $item->id ? 'selected' : '' }}>
+                                {{ $item->nome }}
+                            </option>
+                        @endforeach
 
-            <div class="d-grid gap-3 mt-4">
-                <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a type="submit" class="btn btn-success" href="{{ url('consulta') }}">Voltar</a>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-3 mt-4">
+                    <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
+                    <a type="submit"  style="background-color: #1148ad; color: white;" class="btn" href="{{ url('consulta') }}">Voltar</a>
+                </div>
+
             </div>
 
         </div>

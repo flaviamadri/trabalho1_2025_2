@@ -10,7 +10,7 @@
         }
     @endphp
 
-        <form action="{{ $action }}" method='post' enctype="multipart/form-data">
+    <form action="{{ $action }}" method='post' enctype="multipart/form-data">
         @csrf
 
         @if (!empty($dado->id))
@@ -19,17 +19,21 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="mx-auto bg-white p-4 rounded border p-4 rounded" style="max-width: 800px;">
+        <div class="mx-auto bg-white p-4 rounded" style="max-width: 800px;">
 
-            <h2 class="mt-3 mb-3">Cadastro de Médicos</h2>
+            <h2 class="mt-3 mb-5">Cadastro de Médicos</h2>
+
+            <div class="border p-4 rounded shadow-lg">
 
                 @php
-                      $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
-                 @endphp
-            <div class="col">
-                <label class="form-label" for=""><strong>Imagem</strong></label>
-                <input  class="form-control" type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
-            </div>
+                    $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
+                @endphp
+
+                <div class="col">
+                    <label class="form-label" for=""><strong>Imagem</strong></label>
+                    <input class="form-control" type="file" name="imagem"
+                        value="{{ old('imagem', $dado->imagem ?? '') }}">
+                </div>
                 <div class="mt-3">
                     <label class="form-label" for=""><strong>Nome</strong></label>
                     <input class="form-control" type="text" name="nome" value="{{ old('nome', $dado->nome ?? '') }}">
@@ -78,8 +82,10 @@
                 <div class="d-grid gap-3 mt-4">
                     <button type="submit"
                         class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                    <a type="submit" class="btn btn-success" href="{{ url('medico') }}">Voltar</a>
+                    <a type="submit" style="background-color: #1148ad; color: white;" class="btn" href="{{ url('medico') }}">Voltar</a>
                 </div>
+
+            </div>
         </div>
 
     </form>

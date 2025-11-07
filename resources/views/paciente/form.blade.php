@@ -19,41 +19,43 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="mx-auto bg-white p-4 rounded col border p-4 rounded" style="max-width: 800px;">
+        <div class="mx-auto bg-white p-4 rounded" style="max-width: 800px;">
 
-            <h2 class="mt-3 mb-3 ">Cadastro de Pacientes</h2>
+            <h2 class="mt-3 mb-5 ">Cadastro de Pacientes</h2>
 
-            @php
-                $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
-            @endphp
-            <div class="col">
-                <label class="form-label" for=""><strong>Imagem</strong></label>
-                <input class="form-control"type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
-            </div>
+            <div class="border p-4 rounded shadow-lg">
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Nome</strong></label>
-                <input class="form-control" type="text" name="nome" value="{{ old('nome', $dado->nome ?? '') }}">
-            </div>
+                @php
+                    $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
+                @endphp
+                <div class="col">
+                    <label class="form-label" for=""><strong>Imagem</strong></label>
+                    <input class="form-control"type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>CPF</strong></label>
-                <input class="form-control" type="text" placeholder="000.000.000-00" name="cpf"
-                    value="{{ old('cpf', $dado->cpf ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Nome</strong></label>
+                    <input class="form-control" type="text" name="nome" value="{{ old('nome', $dado->nome ?? '') }}">
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Data de nascimento</strong></label>
-                <input class="form-control" type="date" name="nascimento"
-                    value="{{ old('nascimento', $dado->nascimento ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>CPF</strong></label>
+                    <input class="form-control" type="text" placeholder="000.000.000-00" name="cpf"
+                        value="{{ old('cpf', $dado->cpf ?? '') }}">
+                </div>
 
-            <div class="mt-3">
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Data de nascimento</strong></label>
+                    <input class="form-control" type="date" name="nascimento"
+                        value="{{ old('nascimento', $dado->nascimento ?? '') }}">
+                </div>
 
-                <label class="form-label" for=""><strong>Tipo sanguíneo</strong></label>
-                <select class="form-select" name="tiposanguineo_paciente_id">
+                <div class="mt-3">
 
-                    <option value="" disabled selected>Selecione</option>
+                    <label class="form-label" for=""><strong>Tipo sanguíneo</strong></label>
+                    <select class="form-select" name="tiposanguineo_paciente_id">
+
+                        <option value="" disabled selected>Selecione</option>
 
                     @foreach ($tiposanguineos as $item)
                         <option value="{{ $item->id }}"
@@ -62,30 +64,33 @@
                         </option>
                     @endforeach
 
-                </select>
-            </div>
+                    </select>
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Telefone</strong></label>
-                <input class="form-control" type="text" name="telefone" placeholder="(00) 00000-0000"
-                    value="{{ old('telefone', $dado->telefone ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Telefone</strong></label>
+                    <input class="form-control" type="text" name="telefone" placeholder="(00) 00000-0000"
+                        value="{{ old('telefone', $dado->telefone ?? '') }}">
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>Endereço</strong></label>
-                <input class="form-control" type="text" name="endereco"
-                    value="{{ old('endereco', $dado->endereco ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>Endereço</strong></label>
+                    <input class="form-control" type="text" name="endereco"
+                        value="{{ old('endereco', $dado->endereco ?? '') }}">
+                </div>
 
-            <div class="mt-3">
-                <label class="form-label" for=""><strong>E-mail</strong></label>
-                <input class="form-control" type="email" placeholder="Nome@gmail.com" name="email"
-                    value="{{ old('email', $dado->email ?? '') }}">
-            </div>
+                <div class="mt-3">
+                    <label class="form-label" for=""><strong>E-mail</strong></label>
+                    <input class="form-control" type="email" placeholder="Nome@gmail.com" name="email"
+                        value="{{ old('email', $dado->email ?? '') }}">
+                </div>
 
-            <div class="d-grid gap-3 mt-4">
-                <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
-                <a type="submit" class="btn btn-success" href="{{ url('paciente') }}">Voltar</a>
+                <div class="d-grid gap-3 mt-4">
+                    <button type="submit"
+                        class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>
+                    <a type="submit" style="background-color: #1148ad; color: white;" class="btn" href="{{ url('paciente') }}">Voltar</a>
+                </div>
+
             </div>
 
         </div>

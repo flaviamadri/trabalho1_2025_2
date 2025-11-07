@@ -42,7 +42,7 @@
                     Novo
                 </a>
 
-                <a class="btn btn-success"  href="{{ url('/medico/report') }}">
+                <a class="btn btn-success" href="{{ url('/medico/report') }}">
                     <i class="fa-solid fa-plus"></i>
                     Relatório PDF
                 </a>
@@ -60,7 +60,7 @@
             <tr>
 
                 <td><strong>#</strong></td>
-                 <td><strong>Imagem</strong></td>
+                <td><strong>Imagem</strong></td>
                 <td><strong>Nome</strong></td>
                 <td><strong>CPF</strong></td>
                 <td><strong>CRM</strong></td>
@@ -74,38 +74,38 @@
         </thead>
 
         <tbody>
-             @foreach ($dados as $item)
+            @foreach ($dados as $item)
                 @php
                     $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
                 @endphp
 
                 <td>{{ $item->id }}</td>
                 <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
-                    <td>{{ $item->nome }}</td>
-                    <td>{{ $item->cpf }}</td>
-                    <td>{{ $item->crm }}</td>
-                    <td>{{ $item->especialidade->nome }}</td>
-                    <td>{{ $item->telefone }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td class="text-center">
-                        <a href="{{ route('medico.list_pacientes', $item->id) }}" class="btn">
-                            <i style="color: #1148ad;" class="fa-solid fa-users"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <a href="{{ route('medico.edit', $item->id) }}" class="btn">
-                            <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <form action="{{ route('medico.destroy', $item->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn" style="color: red;"
-                                onclick="return confirm('Deseja deletar o resgistro?')"> <i
-                                    class="fas fa-trash fa-lg"></i></button>
-                        </form>
-                    </td>
+                <td>{{ $item->nome }}</td>
+                <td>{{ $item->cpf }}</td>
+                <td>{{ $item->crm }}</td>
+                <td>{{ $item->especialidade->nome }}</td>
+                <td>{{ $item->telefone }}</td>
+                <td>{{ $item->email }}</td>
+                <td class="text-center">
+                    <a href="{{ route('medico.list_pacientes', $item->id) }}" class="btn">
+                        <i style="color: #1148ad;" class="fa-solid fa-users"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="{{ route('medico.edit', $item->id) }}" class="btn">
+                        <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <form action="{{ route('medico.destroy', $item->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn" style="color: red;"
+                            onclick="return confirm('Deseja deletar o resgistro?')"> <i
+                                class="fas fa-trash fa-lg"></i></button>
+                    </form>
+                </td>
                 </tr>
             @endforeach
 
