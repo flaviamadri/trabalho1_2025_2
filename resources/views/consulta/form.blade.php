@@ -20,9 +20,10 @@
 
         <input type="hidden" name="id" value="{{ old('id', $dado->id ?? '') }}">
 
-        <div class="mx-auto bg-white p-4 rounded col" style="max-width: 600px;">
+        <div class="mx-auto bg-white p-4 rounded col border p-4 rounded" style="max-width: 800px;">
 
             <h2 class="mt-3 mb-3">Cadastro de Consultas</h2>
+            
 
             <div class="mt-3">
 
