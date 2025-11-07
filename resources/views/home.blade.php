@@ -16,38 +16,22 @@
 
     <header>
 
-        <nav class="navbar navbar-expand-lg px-3">
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #1148ad;">
 
-            <div class="container-fluid">
+            <div class="container">
 
-                <a class="navbar-brand fs-3" href="#">Flavy - Sistema de gestão</a>
-
-                <div class="collapse navbar-collapse fs-5" id="navbarNav">
-
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Médicos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pacientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-disabled="true">Consultas</a>
-                        </li>
-                    </ul>
-
-                </div>
-
+                <a class="navbar-brand fw-bold d-flex" href="#">
+                    <span class="fs-1 me-4">Flavy</span>
+                </a>
+                
             </div>
         </nav>
+
     </header>
 
     <div class="container py-5">
 
-        <h5>Bem-vindo ao sistema de gestão.</h5>
+        <h2 class="mt-3">Bem-vindo ao sistema de gestão!</h2>
 
         <div class='row text-center mt-5'>
 

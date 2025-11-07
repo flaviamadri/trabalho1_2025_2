@@ -155,6 +155,7 @@ class MedicoController extends Controller
 
         return $pdf->download('relatorio_listagem_medicos.pdf');
     }
+    
     public function listarPacientes($id)
     {
         $medico = Medico::with('consultas.paciente')->findOrfail($id);

@@ -27,9 +27,8 @@
                 $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
             @endphp
             <div class="col">
-                <label for="">Imagem</label>
-                <img src="/storage/{{ $nome_imagem }}" width="200px" height="200px" alt="img">
-                <input type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
+                <label class="form-label" for=""><strong>Imagem</strong></label>
+                <input class="form-control"type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
             </div>
 
             <div class="mt-3">

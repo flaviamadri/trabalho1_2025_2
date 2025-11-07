@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #1148ad;">
+
+            <div class="container">
+
+                <a class="navbar-brand fw-bold d-flex" href="#">
+                    <span class="fs-1 me-4">Flavy</span>
+                </a>
+
+            </div>
+        </nav>
+
+    </header>
+
     <div class="container mt-4">
         <div class="row">
             @if ($errors->any())

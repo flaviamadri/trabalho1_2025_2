@@ -27,7 +27,7 @@ class PacienteController extends Controller
     {
         $tiposanguineos = TipoSanguineo::orderBy('nome')->get();
 
-        return view('paciente.form', ['tiposanguineo' => $tiposanguineos]);
+        return view('paciente.form', ['tiposanguineos' => $tiposanguineos]);
     }
 
     private function validateRequest(Request $request)
