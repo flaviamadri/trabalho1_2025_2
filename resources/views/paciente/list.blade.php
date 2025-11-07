@@ -63,8 +63,8 @@
 
         <thead>
             <tr>
-                <td><strong>Imagem</strong></td>
                 <td><strong>#</strong></td>
+                <td><strong>Img</strong></td>
                 <td><strong>Nome</strong></td>
                 <td><strong>CPF</strong></td>
                 <td><strong>Data de nasc.</strong></td>
@@ -72,40 +72,41 @@
                 <td><strong>Telefone</strong></td>
                 <td><strong>Endereço</strong></td>
                 <td><strong>Email</strong></td>
-                <td><strong>Editar</strong></td>
-                <td><strong>Deletar</strong></td>
+                <td><strong>Edit</strong></td>
+                <td><strong>Delet</strong></td>
             </tr>
         </thead>
 
         <tbody>
 
             @foreach ($dados as $item)
-              @php
-                $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
-            @endphp                    <tr>
-                    <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->nome }}</td>
-                    <td>{{ $item->cpf }}</td>
-                    <td>{{ $item->nascimento }}</td>
-                    <td>{{ $item->tiposanguineo->nome }}</td>
-                    <td>{{ $item->telefone }}</td>
-                    <td style="max-width: 200px">{{ $item->endereco }}</td>
-                    <td style="max-width: 250px">{{ $item->email }}</td>
-                    <td class="text-center">
-                        <a href="{{ route('paciente.edit', $item->id) }}" class="btn">
-                            <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <form action="{{ route('paciente.destroy', $item->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn" style="color: red;"
-                                onclick="return confirm('Deseja deletar o resgistro?')"> <i
-                                    class="fas fa-trash fa-lg"></i></button>
-                        </form>
-                    </td>
+                @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
+                @endphp
+
+                <td>{{ $item->id }}</td>
+                <td><img src="/storage/{{ $nome_imagem }}" width="100px" height="100px" alt="img"></td>
+                <td>{{ $item->nome }}</td>
+                <td>{{ $item->cpf }}</td>
+                <td>{{ $item->nascimento }}</td>
+                <td>{{ $item->tiposanguineo->nome }}</td>
+                <td>{{ $item->telefone }}</td>
+                <td style="max-width: 200px">{{ $item->endereco }}</td>
+                <td style="max-width: 250px">{{ $item->email }}</td>
+                <td class="text-center">
+                    <a href="{{ route('paciente.edit', $item->id) }}" class="btn">
+                        <i style="color: #1148ad;" class="fa-regular fa-pen-to-square fa-lg"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <form action="{{ route('paciente.destroy', $item->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn" style="color: red;"
+                            onclick="return confirm('Deseja deletar o resgistro?')"> <i
+                                class="fas fa-trash fa-lg"></i></button>
+                    </form>
+                </td>
                 </tr>
             @endforeach
         </tbody>

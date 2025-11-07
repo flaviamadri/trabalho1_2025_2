@@ -19,7 +19,7 @@ class PacienteFactory extends Factory
     {
         return [
 
-            'imagem' => 'uploads/' . basename($this->faker->image(public_path('uploads'), 400, 400, 'cats', true, true)),
+            'imagem' => null,
             'nome' => $this->faker->name(),
             'cpf' => $this->faker->unique()->numerify('###########'),
             'nascimento' => $this->faker->date(),

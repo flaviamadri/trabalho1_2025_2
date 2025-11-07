@@ -10,7 +10,7 @@
         }
     @endphp
 
-    <form action="{{ $action }}" method='post'>
+    <form action="{{ $action }}" method='post' enctype="multipart/form-data">
         @csrf
 
         @if (!empty($dado->id))
@@ -22,6 +22,15 @@
         <div class="mx-auto bg-white p-4 rounded col" style="max-width: 600px;">
 
             <h2 class="mt-3 mb-3">Cadastro de Pacientes</h2>
+
+            @php
+                $nome_imagem = !empty($dado->imagem) ? $dado->imagem : 'profile2.png';
+            @endphp
+            <div class="col">
+                <label for="">Imagem</label>
+                <img src="/storage/{{ $nome_imagem }}" width="200px" height="200px" alt="img">
+                <input type="file" name="imagem" value="{{ old('imagem', $dado->imagem ?? '') }}">
+            </div>
 
             <div class="mt-3">
                 <label class="form-label" for=""><strong>Nome</strong></label>
@@ -47,7 +56,7 @@
 
                     <option value="" disabled selected>Selecione</option>
 
-                    @foreach ($tiposanguineo as $item)
+                    @foreach ($tiposanguineos as $item)
                         <option value="{{ $item->id }}"
                             {{ old('tiposanguineo_id', $item->tiposanguineo_id ?? '') == $item->id ? 'selected' : '' }}>
                             {{ $item->nome }}
@@ -74,15 +83,6 @@
                 <input class="form-control" type="email" placeholder="Nome@gmail.com" name="email"
                     value="{{ old('email', $dado->email ?? '') }}">
             </div>
-             @php
-                $nome_imagem = !empty($dado->imagem) ? $dado->imagem :'sem_imagem.png';
-            @endphp
-
-            <div class="col"><br>
-                <label for="">Imagem:</label>
-                <img src="/storage/{{$nome_imagem}}" width="200px" height="200px" alt="img">
-                <input class= "form-control" type="file" name="imagem" value="{{old('imagem',$dado->imagem ?? '')}}">
-        </div>
 
             <div class="d-grid gap-3 mt-4">
                 <button type="submit" class="btn btn-success">{{ !empty($dado->id) ? 'Atualizar' : 'Salvar' }}</button>

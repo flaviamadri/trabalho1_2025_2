@@ -39,6 +39,7 @@
     <table>
         <thead>
             <tr>
+                <td>Imagem</td>
                 <td>Nome</td>
                 <td>CPF</td>
                 <td>Data de nasc.</td>
@@ -48,10 +49,11 @@
                 <td>Email</td>
             </tr>
         </thead>
-        <tbody>
+         <tbody>
             @foreach ($dados as $item)
-            @php
-                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.png';
+                @php
+                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'profile2.png';
+                    //ou public_path('storage/' . $nome_imagem);
                     $imagemPath = storage_path('app/public/' . $nome_imagem);
                 @endphp
                 <tr>
@@ -61,8 +63,8 @@
                     <td>{{ $item->nascimento }}</td>
                     <td>{{ $item->tiposanguineo->nome }}</td>
                     <td>{{ $item->telefone }}</td>
-                    <td style="max-width: 30px">{{ $item->endereco }}</td>
-                    <td style="max-width: 30px">{{ $item->email }}</td>
+                    <td>{{ $item->endereco }}</td>
+                    <td >{{ $item->email }}</td>
                 </tr>
             @endforeach
         </tbody>

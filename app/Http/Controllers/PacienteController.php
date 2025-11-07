@@ -33,6 +33,8 @@ class PacienteController extends Controller
     private function validateRequest(Request $request)
     {
         $request->validate([
+
+            'imagem' => 'nullable|image|mimes:png,jpg,jpeg',
             'nome' => 'required',
             'cpf' => 'required',
             'nascimento' => 'required',
@@ -46,14 +48,31 @@ class PacienteController extends Controller
             'tiposanguineo_paciente_id' => 'A tipo sanguíneo é obrigatório',
             'telefone.required' => 'O telefone é obrigatório',
             'email.required' => 'O E-mail é obrigatório',
+            'imagem.image' => 'O :attribute deve ser enviado',
+            'imagem.mimes' => 'O :attribute deve ser das extensões:PNG,JPEG,JPG',
         ]);
     }
 
-    public function store(Request $request)
+     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validateRequest($request);
+        $data = $request->all();
+        $imagem = $request->file('imagem');
 
-        Paciente::create($request->all());
+        if ($imagem) {
+            $nome_imagem = date('YmdiHs') . "." . $imagem->getClientOriginalExtension();
+            $diretorio = "imagem/paciente/";
+
+            $imagem->storeAs(
+                $diretorio,
+                $nome_imagem,
+                'public'
+            );
+            $data['imagem'] = $diretorio . $nome_imagem;
+        }
+
+        Paciente::create($data);
 
         return redirect('paciente');
     }
@@ -82,6 +101,7 @@ class PacienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //dd($request->all());
         $this->validateRequest($request);
         $data = $request->all();
         $imagem = $request->file('imagem');
@@ -156,7 +176,8 @@ class PacienteController extends Controller
         return $pdf->download('relatorio_listagem_pacientes.pdf');
     }
 
-     public function chart(TipoSanguineoPacienteChart $chart){
+    public function chart(TipoSanguineoPacienteChart $chart)
+    {
 
         return view('paciente.chart', ['chart' => $chart->build()]);
     }
